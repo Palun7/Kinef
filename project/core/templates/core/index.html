@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {% block title %}
     Espacio Kinef
@@ -7,5 +8,6 @@
 {% block content %}
     <main>
         <h1>Kinef</h1>
+        <img src="{% static 'img/kinef_logo1.png' %}" alt="no se encontro la foto">
     </main>
 {% endblock content %}
