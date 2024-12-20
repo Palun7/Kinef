@@ -7,13 +7,18 @@
     <meta name="keywords">
     <meta name="description">
     <link rel="icon" href="{% static '/img/kinef_logo1.png' %}">
+    <link rel="stylesheet" href="{% static 'style/css/style.css' %}">
     <title>
         {% block title %}
         {% endblock title %}
     </title>
 </head>
 <body>
+    {% include 'core/components/navbar.html' %}
+
     {% block content %}
     {% endblock content %}
+
+    {% include 'core/components/footer.html' %}
 </body>
 </html>
