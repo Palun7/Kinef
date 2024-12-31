@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'img/kinef_logo1.png' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Inicio de Sesión o Registro</title>
+</head>
+<body>
+    <nav class="navbar">
+        {% include 'core/components/navbar.html' %}
+    </nav>
+    <section class="container-login">
+        <h3>Inicio de sesión</h3>
+        <form id="login-form">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Usuario" required />
+            <input type="password" name="password" placeholder="Contraseña" required />
+            <button type="submit">Iniciar sesión</button>
+        </form>
+    </section>
+    <section class="container-signup">
+        <h3>Registrarse</h3>
+        <div id="container_register-form" class="container-register-form">
+            <div id="errores_password">
+            </div>
+            <form id="register-form">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Usuario" required />
+                <input type="password" name="password" placeholder="Contraseña" id="password" required />
+                <input type="password" name="password2" placeholder="Repite la contraseña" id="password2" required />
+                <input type="text" name="dni" placeholder="DNI" required />
+                <input type="date" name="fecha_nacimiento" required />
+                <input type="text" name="telefono" placeholder="Teléfono" required />
+                <input type="text" name="domicilio" placeholder="Domicilio" required />
+                <input type="text" name="instagram" placeholder="Instagram" />
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="{% static 'usuarios/scripts/user-management.js' %}"></script>
+</body>
+</html>

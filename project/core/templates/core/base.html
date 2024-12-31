@@ -6,19 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords">
     <meta name="description">
-    <link rel="icon" href="{% static '/img/kinef_logo1.png' %}">
-    <link rel="stylesheet" href="{% static 'style/css/style.css' %}">
+    <link rel="icon" href="{% static 'img/kinef_logo1.png' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>
         {% block title %}
         {% endblock title %}
     </title>
 </head>
 <body>
-    {% include 'core/components/navbar.html' %}
-
-    {% block content %}
-    {% endblock content %}
-
-    {% include 'core/components/footer.html' %}
+    <nav class="navbar">
+        {% include 'core/components/navbar.html' %}
+    </nav>
+    <main class="contenedor-main">
+        {% block content %}
+        {% endblock content %}
+    </main>
+    <footer class="footer">
+        {% include 'core/components/footer.html' %}
+    </footer>
 </body>
 </html>

@@ -6,7 +6,7 @@
 
 {% block content %}
     <h1>Administración</h1>
-    <a href="#">Horas</a>
-    <a href="#">Gastos</a>
-    <a href="#">Pagos</a>
+    <a href="{% url 'administracion:horas' %}" class="boton-basico">Horas</a>
+    <a href="{% url 'administracion:gastos' %}" class="boton-basico">Gastos</a>
+    <a href="{% url 'administracion:pagos' %}" class="boton-basico">Pagos</a>
 {% endblock content %}
