@@ -1,6 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import timedelta
+from django.core.exceptions import ValidationError
+
+def validate_image(file):
+    max_size_kb = 5120  # Tamaño máximo en KB (5 MB)
+    if file.size > max_size_kb * 1024:
+        raise ValidationError("El tamaño máximo de la imagen es de 5 MB")
+    if not file.content_type.startswith('image/'):
+        raise ValidationError("El archivo debe ser una imagen")
 
 class Usuarios(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -9,7 +17,7 @@ class Usuarios(models.Model):
     telefono = models.CharField(max_length=15)
     domicilio = models.CharField(max_length=150)
     instagram = models.CharField(max_length=150, null=True, blank=True)
-    foto = models.ImageField(upload_to='fotos', null=True, blank=True)
+    foto = models.ImageField(upload_to='img', null=True, blank=True)
     cargado = models.DateField(auto_now_add=True)
 
     def __str__(self):

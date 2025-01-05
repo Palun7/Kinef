@@ -1,3 +1,13 @@
 <a href="{% url 'core:index' %}" class="boton-basico">Inicio Kinef</a>
-<a href="{% url 'administracion:administracion' %}" class="boton-basico">Administración</a>
-<a href="{% url 'usuarios:user_management' %}" class="boton-basico">Iniciar sesión/Registrarse </a>
+{% if user.is_superuser %}
+    <a href="{% url 'administracion:administracion' %}" class="boton-basico">Administración</a>
+{% endif %}
+{% if user.is_authenticated %}
+    <a href="#" class="boton-basico">{{ user.username }}</a>
+    <form action="{% url 'usuarios:logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="link boton-basico">Cerrar sesión</button>
+    </form>
+{% else %}
+    <a href="{% url 'usuarios:user_management' %}" class="boton-basico">Iniciar sesión/Registrarse </a>
+{% endif %}

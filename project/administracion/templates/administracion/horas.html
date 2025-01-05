@@ -1,9 +1,31 @@
-{% extends 'core/base.html' %}
-
-{% block title %}
-    Horas
-{% endblock title %}
-
-{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'img/kinef_logo1.png' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Horas</title>
+</head>
+<body>
+    <nav>
+        {% include 'core/components/navbar.html' %}
+    </nav>
     <h1>Horas</h1>
-{% endblock content %}
+    <div>
+        <button class="boton-basico">Cargar horas</button>
+        <form id="horas-form">
+            {% csrf_token %}
+            <input type="text" id="usuario" required>
+            <input type="date" id="dia" required>
+            <input type="number" id="horas" max="3" required>
+            <button type="submit">Cargar</button>
+        </form>
+    </div>
+    <div>
+        <a href="{% url 'administracion:administracion' %}" class="boton-basico">Atrás</a>
+    </div>
+    <script src="{% static 'administracion/scripts/horas.js' %}"></script>
+</body>
+</html>

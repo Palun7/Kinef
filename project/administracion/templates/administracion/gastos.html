@@ -1,9 +1,21 @@
-{% extends 'core/base.html' %}
-
-{% block title %}
-    Gastos
-{% endblock title %}
-
-{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'img/kinef_logo1.png' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Gastos</title>
+</head>
+<body>
+    <nav>
+        {% include 'core/components/navbar.html' %}
+    </nav>
     <h1>Gastos</h1>
-{% endblock content %}
+    <div>
+        <a href="{% url 'administracion:administracion' %}" class="boton-basico">Atrás</a>
+    </div>
+    <script src="{% static 'administracion/scripts/gastos.js' %}"></script>
+</body>
+</html>

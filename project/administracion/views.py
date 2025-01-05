@@ -1,13 +1,19 @@
 from django.shortcuts import render
+from django.views import View
+from .models import Horas, Gastos, Pagos
+
 
 def administracion(request):
     return render(request, 'administracion/administracion.html')
 
-def horas(request):
-    return render(request, 'administracion/horas.html')
+class HorasView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'administracion/horas.html')
 
-def gastos(request):
-    return render(request, 'administracion/gastos.html')
+class GastosView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'administracion/gastos.html')
 
-def pagos(request):
-    return render(request, 'administracion/pagos.html')
+class PagosView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'administracion/pagos.html')
