@@ -62,9 +62,6 @@ async function sendUserDataFormData(formData) {
                     background: "linear-gradient(to right,rgb(173, 0, 176),rgb(255, 191, 0))",
                   },
             }).showToast();
-            setTimeout(() => {
-                window.location.href = `../../`;
-            }, 2000);
         } else {
             Toastify({
                 text: `${result.error}`,

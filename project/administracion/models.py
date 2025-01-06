@@ -43,6 +43,10 @@ class Gastos(models.Model):
     def __str__(self):
         return f'{self.concepto}- ${self.monto}, {self.fijo_variable} - {self.fecha_pago}'
 
+    class Meta:
+        verbose_name = 'Gasto'
+        verbose_name_plural = 'Gastos'
+
 class Pagos(models.Model):
     usuario = models.ForeignKey(Usuarios, on_delete=models.DO_NOTHING)
     monto = models.FloatField()

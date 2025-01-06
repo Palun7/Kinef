@@ -65,7 +65,7 @@ class UserManagementView(View):
                 foto=foto
             )
             return JsonResponse({'success': f'{username} se ha registrado con éxito'})
-        except Exception as e:
+        except Exception:
             return JsonResponse({'error': 'Error al intentar registrar, verifique los datos'}, status=500)
 
     def login_user(self, request, data):
@@ -82,5 +82,5 @@ class UserManagementView(View):
                 return JsonResponse({'success': f'{username} ha iniciado sesión'})
             else:
                 return JsonResponse({'error': 'Usuario o contraseña incorrectos'}, status=401)
-        except Exception as e:
+        except Exception:
             return JsonResponse({'error': 'Error interno del servidor al iniciar sesión'}, status=500)

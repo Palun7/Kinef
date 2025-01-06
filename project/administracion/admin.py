@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Horas, Gastos, Pagos
 
-# Register your models here.
+admin.site.register(Horas)
+admin.site.register(Gastos)
+admin.site.register(Pagos)
+

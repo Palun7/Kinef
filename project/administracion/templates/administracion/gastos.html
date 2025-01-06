@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{% static 'img/kinef_logo1.png' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Gastos</title>
 </head>
@@ -13,9 +14,16 @@
         {% include 'core/components/navbar.html' %}
     </nav>
     <h1>Gastos</h1>
+    <form id="gastos_form">
+        
+    </form>
     <div>
         <a href="{% url 'administracion:administracion' %}" class="boton-basico">Atrás</a>
     </div>
+
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="{% static 'administracion/scripts/gastos.js' %}"></script>
 </body>
 </html>

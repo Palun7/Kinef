@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{% static 'img/kinef_logo1.png' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Horas</title>
 </head>
@@ -15,17 +16,23 @@
     <h1>Horas</h1>
     <div>
         <button class="boton-basico">Cargar horas</button>
-        <form id="horas-form">
+        <form id="horas_form">
             {% csrf_token %}
-            <input type="text" id="usuario" required>
-            <input type="date" id="dia" required>
-            <input type="number" id="horas" max="3" required>
+            <select name="usuario" id="usuario">
+                <option value="">Usuario</option>
+            </select>
+            <input type="date" name="dia" required>
+            <input type="number" name="horas" max="3" required>
             <button type="submit">Cargar</button>
         </form>
     </div>
+    <div id="horas_cargadas"></div>
     <div>
         <a href="{% url 'administracion:administracion' %}" class="boton-basico">Atrás</a>
     </div>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="{% static 'administracion/scripts/horas.js' %}"></script>
 </body>
 </html>
