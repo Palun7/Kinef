@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'img/kinef_logo1.png' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{{ user.username }}</title>
+</head>
+<body>
+    <nav class="navbar">
+        {% include 'core/components/navbar.html' %}
+    </nav>
+    <main class="contenedor-main">
+        <div id="tarjeta_usuario" class="tarjeta-usuario">
+            {% if foto %}
+                <div class="foto-perfil-contenedor" id="foto_perfil_contenedor">
+                    <img src="{{ foto.url }}" alt="Foto no cargada" class="foto-perfil">
+                </div>
+            {% endif %}
+            <h3>{{ username }}</h3>
+        </div>
+    </main>
+    <footer class="footer">
+        {% include 'core/components/footer.html' %}
+    </footer>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="{% static 'usuarios/scripts/perfil.js' %}"></script>
+</body>
+</html>

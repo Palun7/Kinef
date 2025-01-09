@@ -10,27 +10,48 @@
     <title>Horas</title>
 </head>
 <body>
-    <nav>
+    <nav class="navbar">
         {% include 'core/components/navbar.html' %}
     </nav>
-    <h1>Horas</h1>
-    <div>
-        <button class="boton-basico">Cargar horas</button>
-        <form id="horas_form">
-            {% csrf_token %}
-            <select name="usuario" id="usuario">
-                <option value="">Usuario</option>
-            </select>
-            <input type="date" name="dia" required>
-            <input type="number" name="horas" max="3" required>
-            <button type="submit">Cargar</button>
-        </form>
-    </div>
-    <div id="horas_cargadas"></div>
-    <div>
-        <a href="{% url 'administracion:administracion' %}" class="boton-basico">Atrás</a>
-    </div>
-
+    <main class="contenedor-main">
+        <div class="administracion-main">
+            <h1>Administración</h1>
+            <ul>
+                <a href="{% url 'administracion:horas' %}" class="boton-basico">Horas</a>
+                <a href="{% url 'administracion:gastos' %}" class="boton-basico">Gastos</a>
+                <a href="{% url 'administracion:pagos' %}" class="boton-basico">Pagos</a>
+            </ul>
+        </div>
+        <div class="horas-main">
+            <h2>Horas</h2>
+            <div class="form-horas-contenedor">
+                <button class="boton-basico" id="cargar_horas">Cargar horas</button>
+                <form id="horas_form" class="horas-form">
+                    {% csrf_token %}
+                    <select name="usuario" id="usuario">
+                        <option value="">Usuario</option>
+                    </select>
+                    <input type="date" name="dia" required>
+                    <input type="number" name="horas" maxlength="3" placeholder="Horas" required>
+                    <button type="submit" class="boton-cargar" id="boton_cargar">Cargar</button>
+                </form>
+            </div>
+        </div>
+        <div class="horas-cargadas-contenedor">
+            <div class="botones-horas">
+                <button id="mostrar_horas" class="boton-basico">Mostrar historial de horas</button>
+                <button id="mostrar_horas_sumadas" class="boton-basico">Ver horas este mes</button>
+            </div>
+            <div id="horas_cargadas" class="horas-cargadas"></div>
+            <div id="horas_sumadas" class="horas-cargadas"></div>
+        </div>
+        <div class="boton-atras-contenedor">
+            <a href="{% url 'administracion:administracion' %}" class="boton-basico">Atrás</a>
+        </div>
+    </main>
+    <footer class="footer">
+        {% include 'core/components/footer.html' %}
+    </footer>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="{% static 'administracion/scripts/horas.js' %}"></script>

@@ -10,14 +10,43 @@
     <title>Pagos</title>
 </head>
 <body>
-    <nav>
+    <nav class="navbar">
         {% include 'core/components/navbar.html' %}
     </nav>
-    <h1>Pagos</h1>
-    <div>
-        <a href="{% url 'administracion:administracion' %}" class="boton-basico">Atrás</a>
-    </div>
-
+    <main class="contenedor-main">
+        <div class="administracion-main">
+        <h1>Administración</h1>
+            <ul>
+                <a href="{% url 'administracion:horas' %}" class="boton-basico">Horas</a>
+                <a href="{% url 'administracion:gastos' %}" class="boton-basico">Gastos</a>
+                <a href="{% url 'administracion:pagos' %}" class="boton-basico">Pagos</a>
+            </ul>
+        </div>
+        <div>
+            <h2>Pagos</h2>
+            <div class="pagos-form-contenedor">
+                <button class="boton-basico">Cargar Pago</button>
+                <form id="pagos_form">
+                    {% csrf_token %}
+                    <select name="usuario" id="usuario">
+                        <option value="">Usuario</option>
+                    </select>
+                    <input type="number" name="monto" placeholder="Monto" required>
+                    <input type="text" name="modo_pago" maxlength="50" placeholder="Modo de pago" required>
+                    <input type="text" name="actividad" maxlength="50" placeholder="Actividad" required>
+                    <input type="text" name="pase" maxlength="50" placeholder="Tipo de Pase" required>
+                    <button type="submit">Cargar Pago</button>
+                </form>
+            </div>
+        </div>
+        <div id="pagos_cargados"></div>
+        <div class="boton-atras-contenedor">
+            <a href="{% url 'administracion:administracion' %}" class="boton-basico">Atrás</a>
+        </div>
+    </main>
+    <footer class="footer">
+        {% include 'core/components/footer.html' %}
+    </footer>
 
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

@@ -84,3 +84,39 @@ class UserManagementView(View):
                 return JsonResponse({'error': 'Usuario o contraseña incorrectos'}, status=401)
         except Exception:
             return JsonResponse({'error': 'Error interno del servidor al iniciar sesión'}, status=500)
+
+class PerfilView(View):
+    def get(self, request, *args, **kwargs):
+        usuario_actual = request.user.usuarios
+
+        contexto = {
+            'username': usuario_actual.user.username,
+            'email': usuario_actual.user.email,
+            'foto': usuario_actual.foto,  # Campo de foto en el modelo Usuarios
+            'dni': usuario_actual.dni,
+            'fecha_nacimiento' : usuario_actual.fecha_nacimiento,
+            'telefono' : usuario_actual.telefono,
+            'domicilio': usuario_actual.domicilio,
+            'instagram' : usuario_actual.instagram,
+            'cargado' : usuario_actual.cargado,
+        }
+        return render(request, 'usuarios/perfil.html', contexto)
+
+    def post(self, request):
+        try:
+            data = json.loads(request.body)
+            action = data.get('action')
+
+            if action == 'obtener_usuarios':
+                return self.obtener_usuarios()
+            else:
+                return JsonResponse({'error': 'Error inesperado'}, status=400)
+        except Exception:
+            return JsonResponse({'error': 'Error al cargar la peticion'}, status=400)
+
+    def obtener_usuarios(self):
+        try:
+            usuarios = Usuarios.objects.filter().values('user__username', 'foto')
+            return JsonResponse(list(usuarios), safe=False)
+        except Exception:
+            return JsonResponse({'error': 'Error al obtener usuarios'}, status=500)

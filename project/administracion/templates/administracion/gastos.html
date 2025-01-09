@@ -10,17 +10,42 @@
     <title>Gastos</title>
 </head>
 <body>
-    <nav>
+    <nav class="navbar">
         {% include 'core/components/navbar.html' %}
     </nav>
-    <h1>Gastos</h1>
-    <form id="gastos_form">
-        
-    </form>
-    <div>
-        <a href="{% url 'administracion:administracion' %}" class="boton-basico">Atrás</a>
-    </div>
-
+    <main class="contenedor-main">
+        <div class="administracion-main">
+            <h1>Administración</h1>
+            <ul>
+                <a href="{% url 'administracion:horas' %}" class="boton-basico">Horas</a>
+                <a href="{% url 'administracion:gastos' %}" class="boton-basico">Gastos</a>
+                <a href="{% url 'administracion:pagos' %}" class="boton-basico">Pagos</a>
+            </ul>
+        </div>
+        <div>
+            <h2>Gastos</h2>
+            <div class="form-contenedor">
+                <button class="boton-basico">Cargar Gasto</button>
+                <form id="gastos_form">
+                    {% csrf_token %}
+                    <select name="usuario" id="usuario">
+                        <option value="">Usuario que carga</option>
+                    </select>
+                    <input type="text" name="concepto" maxlength="200" placeholder="Concepto" required>
+                    <input type="" name="monto" placeholder="Monto" min="0" step="0,001" required>
+                    <input type="date" name="fecha_gasto" required>
+                    <button type="submit">Cargar Gasto</button>
+                </form>
+            </div>
+        </div>
+        <div id="gastos_cargados"></div>
+        <div class="boton-atras-contenedor">
+            <a href="{% url 'administracion:administracion' %}" class="boton-basico">Atrás</a>
+        </div>
+    </main>
+    <footer class="footer">
+        {% include 'core/components/footer.html' %}
+    </footer>
 
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
