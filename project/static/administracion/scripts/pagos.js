@@ -98,21 +98,22 @@ async function obtenerPagos() {
         const pagos = await response.json();
 
         if (response.ok) {
-            const div_contenedor = document.getElementById('pagos_cargados');
-            div_contenedor.innerHTML = '';
+            const buscador = document.getElementById('buscar_pago');
+            buscador.addEventListener('keyup', ()=>{
+                const busqueda = buscador.value.toLowerCase();
+                let pago_filtrado = pagos.filter(i => 
+                    i.usuario__user__username.toLowerCase().includes(busqueda) ||
+                    i.monto.toString().includes(busqueda) ||
+                    i.modo_pago.toLowerCase().includes(busqueda) ||
+                    i.actividad.toLowerCase().includes(busqueda) ||
+                    i.pase.toLowerCase().includes(busqueda) ||
+                    i.fecha.toLowerCase().includes(busqueda)
+                )
 
-            pagos.forEach(pago => {
-                let div = document.createElement('div')
-                div.innerHTML=`
-                    <h3><strong>Usuario:</strong> ${pago.usuario__user__username}</h3>
-                    <p><strong>Monto abonado:</strong> $${pago.monto}</p>
-                    <p><strong>Modo de pago:</strong> ${pago.modo_pago}</p>
-                    <p><strong>Actividad:</strong> ${pago.actividad}</p>
-                    <p><strong>Pase:</strong> ${pago.pase}</p>
-                    <p><strong>Fecha:</strong> ${pago.fecha}</p>
-                `;
-                div_contenedor.appendChild(div);
-            });
+                crearDivPago(pago_filtrado);
+            })
+
+            crearDivPago(pagos);
         } else {
             console.error('Error al obtener pagos:', pagos.error);
         }
@@ -122,4 +123,37 @@ async function obtenerPagos() {
 }
 
 document.addEventListener('DOMContentLoaded', obtenerUsuarios);
+
+const ver_pagos = document.getElementById('ver_pagos');
+
 document.addEventListener('DOMContentLoaded', obtenerPagos);
+
+const cargar_pagos = document.getElementById('cargar_pagos');
+
+cargar_pagos.addEventListener('click', () => {
+    const form_pagos = document.getElementById('pagos_form');
+    if(form_pagos.classList.contains('height-220')){
+        form_pagos.classList.remove('height-220');
+    }else {
+        form_pagos.classList.add('height-220');
+    }
+})
+
+function crearDivPago(dato){
+    const div_contenedor = document.getElementById('pagos_cargados');
+    div_contenedor.innerHTML = '';
+
+    dato.forEach(pago => {
+        let div = document.createElement('div')
+        div.classList.add('gasto')
+        div.innerHTML=`
+            <h3><strong>Usuario:</strong> ${pago.usuario__user__username}</h3>
+            <p><strong>Monto abonado:</strong> $${pago.monto}</p>
+            <p><strong>Modo de pago:</strong> ${pago.modo_pago}</p>
+            <p><strong>Actividad:</strong> ${pago.actividad}</p>
+            <p><strong>Pase:</strong> ${pago.pase}</p>
+            <p><strong>Fecha:</strong> ${pago.fecha}</p>
+        `;
+        div_contenedor.appendChild(div);
+    });
+}

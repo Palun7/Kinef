@@ -32,6 +32,9 @@ class UserManagementView(View):
         try:
             username = request.POST.get('username')
             password = request.POST.get('password')
+            nombre = request.POST.get('nombre')
+            apellido = request.POST.get('apellido')
+            mail = request.POST.get('mail')
             dni = request.POST.get('dni')
             fecha_nacimiento = request.POST.get('fecha_nacimiento')
             telefono = request.POST.get('telefono')
@@ -57,6 +60,9 @@ class UserManagementView(View):
             user = User.objects.create_user(username=username, password=password)
             Usuarios.objects.create(
                 user=user,
+                nombre=nombre,
+                apellido=apellido,
+                mail=mail,
                 dni=dni,
                 fecha_nacimiento=fecha_nacimiento,
                 telefono=telefono,
@@ -91,8 +97,10 @@ class PerfilView(View):
 
         contexto = {
             'username': usuario_actual.user.username,
-            'email': usuario_actual.user.email,
-            'foto': usuario_actual.foto,  # Campo de foto en el modelo Usuarios
+            'nombre': usuario_actual.nombre,
+            'apellido': usuario_actual.apellido,
+            'mail': usuario_actual.mail,
+            'foto': usuario_actual.foto,
             'dni': usuario_actual.dni,
             'fecha_nacimiento' : usuario_actual.fecha_nacimiento,
             'telefono' : usuario_actual.telefono,

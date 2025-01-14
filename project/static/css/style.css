@@ -8,7 +8,7 @@
 }
 
 body {
-    background: linear-gradient(to right, rgba(194, 8, 240, 0.5), rgba(249, 147, 4, 0.5));
+    background: linear-gradient(to right, rgba(194, 8, 240, 0.6), rgba(249, 147, 4, 0.6));
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -39,7 +39,7 @@ h1 {
     padding: 5px;
     border-bottom: 1px solid black;
     border-radius: 10px;
-    background-color: rgb(220, 220, 220);
+    background-color: rgb(202, 250, 248);
     text-decoration: none;
     color: black;
     box-shadow: 0px 0px 0px 0px transparent;
@@ -49,7 +49,25 @@ h1 {
 
 .boton-basico:hover {
     background:linear-gradient(to right,rgba(194, 8, 240, 0.5), rgba(249, 147, 4, 0.5));
-    box-shadow: 0px 0px 1px 1px black;
+    transition-duration: .3s;
+}
+
+.boton-login {
+    width: 70%;
+    height: 40px;
+    padding: 5px;
+    border-bottom: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(202, 250, 248);
+    text-decoration: none;
+    color: black;
+    box-shadow: 0px 0px 0px 0px transparent;
+    cursor: pointer;
+    transition-duration: .5s;
+}
+
+.boton-login:hover {
+    background:linear-gradient(to right,rgb(194, 8, 240), rgb(249, 147, 4));
     transition-duration: .3s;
 }
 
@@ -67,7 +85,7 @@ h1 {
 }
 
 .boton-cargar:hover {
-    background-color: rgb(0, 207, 0);
+    background-color: rgb(201, 119, 233);
     box-shadow: 0px 0px 1px 1px black;
     transition-duration: .3s;
 }
@@ -97,6 +115,26 @@ h1 {
     border: 1px solid black;
 }
 
+.foto-usuarios-contenedor {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative;
+    transition-duration: .5s;
+    border: 1px solid black;
+}
+
+.foto-usuarios-contenedor2 {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative;
+    transition-duration: .5s;
+    border: 1px solid black;
+}
+
 .foto-perfil {
     height: 100%;
     width: 100%;
@@ -106,6 +144,7 @@ h1 {
 }
 
 .tarjeta-usuario {
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -197,8 +236,195 @@ h1 {
     gap: 5vw;
 }
 
+.form-contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
+}
+
+.gastos-form {
+    height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vh;
+    transition-duration: 1s;
+}
+
+.gastos-form input, select {
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(189, 220, 247);
+}
+
+.gastos-form label {
+    position: relative;
+    top: 1vh;
+}
+
+.contenedor-gastos {
+    margin: 2vh 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
+}
+
+.gastos-cargados {
+    display: flex;
+    gap: 2vw;
+    flex-wrap: wrap;
+}
+
+.gasto {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 10px;
+    gap: 1vh;
+}
+
+.usuarios-main {
+    margin: 2vh 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
+}
+
+.usuarios-cargados {
+    display: flex;
+    gap: 2vw;
+    flex-wrap: wrap;
+}
+
+.buscar-usuario {
+    width: 20vw;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(189, 220, 247);
+}
+
+.boton-atras-contenedor {
+    margin: 2vh 0;
+}
+
+.contenedor-main-login {
+    overflow: hidden;
+    width: 100vw;
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+    background-image: url('../img/kinef_logo.png');
+    background-position: center;
+    background-size: 100px;
+}
+
+.container-login {
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(219, 14, 241, .5);
+    border-radius: 30px;
+    transition-duration: .5s;
+}
+
+.container-login .inicio {
+    position: absolute;
+    left: -8vw;
+    rotate: -90deg;
+    font-size: 4em;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition-duration: .5s;
+}
+
+.container-login .inicio:hover {
+    scale: 1.1;
+}
+
+.container-login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+}
+
+.container-login form input {
+    background-color: rgb(201, 255, 255);
+    width: 20vw;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.5em;
+}
+
+.container-signup {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(249, 147, 4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    left: 95vw;
+    transition-duration: .5s;
+}
+
+.container-signup .registrarse {
+    position: absolute;
+    left: -6.5vw;
+    rotate: -90deg;
+    font-size: 4em;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition-duration: .5s;
+}
+
+.container-signup .registrarse:hover {
+    scale: 1.1;
+}
+
+.container-signup form {
+    position: relative;
+    right: 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
+}
+
+.container-signup form input {
+    background-color: rgb(201, 255, 255);
+    width: 20vw;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+}
+
+/* predeterminados */
+
 .display-none {
     display: none;
+}
+
+.position-relative {
+    position: relative;
 }
 
 .position-absolute {
@@ -209,8 +435,20 @@ h1 {
     height: 0;
 }
 
-.height-200 {
+.height-150 {
     height: 150px;
+}
+
+.height-200 {
+    height: 200px;
+}
+
+.height-220 {
+    height: 220px;
+}
+
+.height-230 {
+    height: 230px;
 }
 
 .height-auto {
@@ -221,8 +459,24 @@ h1 {
     top: 5vh;
 }
 
-.z-index {
+.z-index-negativo {
     z-index: -1;
+}
+
+.z-index-100 {
+    z-index: 100;
+}
+
+.left-5 {
+    left: 5vw;
+}
+
+.left-90 {
+    left: 90vw;
+}
+
+.cursor {
+    cursor: pointer;
 }
 
 /* footer */

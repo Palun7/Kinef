@@ -16,11 +16,12 @@
     <main class="contenedor-main">
         <div id="tarjeta_usuario" class="tarjeta-usuario">
             {% if foto %}
-                <div class="foto-perfil-contenedor" id="foto_perfil_contenedor">
+                <div class="foto-perfil-contenedor cursor" id="foto_perfil_contenedor">
                     <img src="{{ foto.url }}" alt="Foto no cargada" class="foto-perfil">
                 </div>
             {% endif %}
             <h3>{{ username }}</h3>
+            <p>{{ nombre }} {{ apellido }}</p>
         </div>
     </main>
     <footer class="footer">

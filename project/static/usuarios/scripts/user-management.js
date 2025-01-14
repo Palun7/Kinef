@@ -62,6 +62,11 @@ async function sendUserDataFormData(formData) {
                     background: "linear-gradient(to right,rgb(173, 0, 176),rgb(255, 191, 0))",
                   },
             }).showToast();
+            const div_registro = document.getElementById('container_signup');
+            div_registro.classList.remove('left-5');
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
         } else {
             Toastify({
                 text: `${result.error}`,
@@ -139,5 +144,36 @@ password2_tecla.addEventListener('blur', ()=>{
         let h3 = document.createElement('h3');
         h3.innerHTML = 'Las contraseñas deben coincidir';
         div_errores.appendChild(h3);
+    }
+})
+
+const registrarse = document.getElementById('registrarse');
+
+registrarse.addEventListener('click', ()=>{
+    const div_registro = document.getElementById('container_signup');
+    const div_login = document.getElementById('container_login');
+
+    if(div_registro.classList.contains('left-5')){
+        div_registro.classList.remove('left-5');
+    }else if(div_login.classList.contains('left-90')){
+        div_login.classList.remove('left-90');
+        div_registro.classList.add('left-5');
+    }else{
+        div_registro.classList.add('left-5');
+    }
+})
+
+const inicio = document.getElementById('inicio');
+
+inicio.addEventListener('click', ()=>{
+    const div_registro = document.getElementById('container_signup');
+    const div_login = document.getElementById('container_login');
+
+    if(div_registro.classList.contains('left-5')){
+        div_registro.classList.remove('left-5');
+    }else if(div_login.classList.contains('left-90') && !div_registro.classList.contains('left-5')){
+        div_login.classList.remove('left-90');
+    }else{
+        div_login.classList.add('left-90');
     }
 })

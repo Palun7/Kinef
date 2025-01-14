@@ -98,22 +98,21 @@ async function obtenerGastos() {
 
         if (response.ok) {
             const div_contenedor = document.getElementById('gastos_cargados');
-            div_contenedor.innerHTML = '';
+            const buscador = document.getElementById('buscar_gasto');
 
-            gastos.forEach(gasto => {
-                const fechaUTC = new Date(gasto.fecha_gasto);
-                const fechaLocal = new Date(fechaUTC.getTime() + fechaUTC.getTimezoneOffset() * 60000);
+            buscador.addEventListener('keyup', ()=>{
+                div_contenedor.innerHTML = '';
+                const busqueda = buscador.value.toLowerCase();
+                let gasto_filtrado = gastos.filter(i =>
+                    i.concepto.toLowerCase().includes(busqueda) ||
+                    i.fecha_gasto.toLowerCase().includes(busqueda) ||
+                    i.monto.toString().includes(busqueda) ||
+                    i.usuario__user__username.toLowerCase().includes(busqueda)
+                );
+                crearDivGasto(gasto_filtrado);
+            })
 
-                const diaLocal = fechaLocal.toISOString().split('T')[0];
-                let div = document.createElement('div')
-                div.innerHTML=`
-                    <p><strong>Concepto:</strong> ${gasto.concepto}</p>
-                    <p><strong>Fecha:</strong> ${gasto.fecha_gasto}</p>
-                    <p><strong>Monto:</strong> ${gasto.monto}</p>
-                    <p><strong>Cargado por:</strong> ${gasto.usuario__user__username}</p>
-                `;
-                div_contenedor.appendChild(div);
-            });
+            crearDivGasto(gastos);
         } else {
             console.error('Error al obtener gastos:', gastos.error);
         }
@@ -124,3 +123,35 @@ async function obtenerGastos() {
 
 document.addEventListener('DOMContentLoaded', obtenerUsuarios);
 document.addEventListener('DOMContentLoaded', obtenerGastos);
+
+const cargar_gastos = document.getElementById('cargar_gastos');
+
+cargar_gastos.addEventListener('click', () => {
+    const form_gastos = document.getElementById('gastos_form');
+    if(form_gastos.classList.contains('height-220')){
+        form_gastos.classList.remove('height-220');
+    }else {
+        form_gastos.classList.add('height-220');
+    }
+})
+
+function crearDivGasto(dato){
+    const div_contenedor = document.getElementById('gastos_cargados');
+    div_contenedor.innerHTML = '';
+
+    dato.forEach(gasto => {
+        const fechaUTC = new Date(gasto.fecha_gasto);
+        const fechaLocal = new Date(fechaUTC.getTime() + fechaUTC.getTimezoneOffset() * 60000);
+
+        const diaLocal = fechaLocal.toISOString().split('T')[0];
+        let div = document.createElement('div')
+        div.classList.add('gasto')
+        div.innerHTML=`
+            <p><strong>Concepto:</strong> ${gasto.concepto}</p>
+            <p><strong>Fecha:</strong> ${gasto.fecha_gasto}</p>
+            <p><strong>Monto:</strong> ${gasto.monto}</p>
+            <p><strong>Cargado por:</strong> ${gasto.usuario__user__username}</p>
+        `;
+        div_contenedor.appendChild(div);
+    });
+}

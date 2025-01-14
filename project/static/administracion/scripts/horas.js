@@ -139,11 +139,11 @@ const cargar_horas = document.getElementById('cargar_horas');
 
 cargar_horas.addEventListener('click', () => {
     const form_horas = document.getElementById('horas_form');
-    if(form_horas.classList.contains('height-200')){
-        form_horas.classList.remove('height-200');
+    if(form_horas.classList.contains('height-150')){
+        form_horas.classList.remove('height-150');
         // form_horas.classList.remove('bottom-5vh');
     }else {
-        form_horas.classList.add('height-200');
+        form_horas.classList.add('height-150');
         // form_horas.classList.add('bottom-5vh');
     }
 })

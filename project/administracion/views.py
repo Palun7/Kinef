@@ -209,3 +209,43 @@ class PagosView(View):
             return JsonResponse(data, safe=False)
         except Exception:
             return JsonResponse({'error': 'Error al obtener las horas'}, status=500)
+
+class UsuariosView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'administracion/usuarios.html')
+
+    def post(self,request):
+        try:
+            data = json.loads(request.body)
+            action = data.get('action')
+
+            if action == 'obtener_usuarios':
+                return self.obtener_usuarios()
+            else:
+                return JsonResponse({'error': 'Se produjo un error'}, status=400)
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Formato incorrecto'}, status=400)
+
+    def obtener_usuarios(self):
+        try:
+            usuarios = Usuarios.objects.all()
+            usuarios_data = [
+                {
+                    'user__username': usuario.user.username,
+                    'nombre': usuario.nombre,
+                    'apellido': usuario.apellido,
+                    'mail': usuario.mail if usuario.mail else '-',
+                    'dni': usuario.dni,
+                    'telefono': usuario.telefono,
+                    'domicilio': usuario.domicilio,
+                    'fecha_nacimiento': usuario.fecha_nacimiento.strftime('%d/%m/%Y') if usuario.fecha_nacimiento else None,
+                    'instagram': usuario.instagram if usuario.instagram else '-',
+                    'foto': usuario.foto.url if usuario.foto else None,
+                    'cargado': usuario.cargado.strftime('%d/%m/%Y') if usuario.cargado else None,
+                }
+                for usuario in usuarios
+            ]
+            return JsonResponse(usuarios_data, safe=False)
+        except Exception:
+            return JsonResponse({'error': 'Error al obtener usuarios'}, status=500)

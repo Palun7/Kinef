@@ -12,6 +12,9 @@ def validate_image(file):
 
 class Usuarios(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    nombre = models.CharField(max_length=50, null=True, blank=True)
+    apellido = models.CharField(max_length=50, null=True, blank=True)
+    mail = models.CharField(max_length=50, blank=True, null=True)
     dni = models.CharField(max_length=8, unique=True)
     fecha_nacimiento = models.DateField()
     telefono = models.CharField(max_length=15)

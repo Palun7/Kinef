@@ -15,18 +15,19 @@
     </nav>
     <main class="contenedor-main">
         <div class="administracion-main">
-        <h1>Administración</h1>
+            <h1>Administración</h1>
             <ul>
                 <a href="{% url 'administracion:horas' %}" class="boton-basico">Horas</a>
                 <a href="{% url 'administracion:gastos' %}" class="boton-basico">Gastos</a>
                 <a href="{% url 'administracion:pagos' %}" class="boton-basico">Pagos</a>
+                <a href="{% url 'administracion:usuarios' %}" class="boton-basico">Usuarios</a>
             </ul>
         </div>
-        <div>
+        <div class="horas-main">
             <h2>Pagos</h2>
-            <div class="pagos-form-contenedor">
-                <button class="boton-basico">Cargar Pago</button>
-                <form id="pagos_form">
+            <div class="form-contenedor">
+                <button class="boton-basico" id="cargar_pagos">Cargar Pago</button>
+                <form id="pagos_form" class="gastos-form">
                     {% csrf_token %}
                     <select name="usuario" id="usuario">
                         <option value="">Usuario</option>
@@ -35,11 +36,14 @@
                     <input type="text" name="modo_pago" maxlength="50" placeholder="Modo de pago" required>
                     <input type="text" name="actividad" maxlength="50" placeholder="Actividad" required>
                     <input type="text" name="pase" maxlength="50" placeholder="Tipo de Pase" required>
-                    <button type="submit">Cargar Pago</button>
+                    <button type="submit" class="boton-cargar">Cargar Pago</button>
                 </form>
             </div>
+            <input type="search" id="buscar_pago" class="buscar-usuario" placeholder="Buscar Pago">
         </div>
-        <div id="pagos_cargados"></div>
+        <div class="contenedor-gastos">
+            <div id="pagos_cargados" class="gastos-cargados"></div>
+        </div>
         <div class="boton-atras-contenedor">
             <a href="{% url 'administracion:administracion' %}" class="boton-basico">Atrás</a>
         </div>
