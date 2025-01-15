@@ -216,6 +216,7 @@ h1 {
 
 .horas-cargadas {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 2vw;
     margin: 2vh 0;
@@ -276,6 +277,7 @@ h1 {
 
 .gastos-cargados {
     display: flex;
+    justify-content: center;
     gap: 2vw;
     flex-wrap: wrap;
 }
@@ -297,15 +299,24 @@ h1 {
     gap: 2vh;
 }
 
+.usuarios-main h2 {
+    text-decoration: underline;
+}
+
+.horas-main h2 {
+    text-decoration: underline;
+}
+
 .usuarios-cargados {
     display: flex;
+    justify-content: center;
     gap: 2vw;
     flex-wrap: wrap;
 }
 
 .buscar-usuario {
     width: 20vw;
-    padding: 5px;
+    padding: 8px;
     border-radius: 10px;
     border: none;
     background-color: rgb(189, 220, 247);
@@ -431,6 +442,10 @@ h1 {
     position: absolute;
 }
 
+.position-fixed {
+    position: sticky;
+}
+
 .height-0 {
     height: 0;
 }
@@ -508,4 +523,255 @@ h1 {
 .trescientos-px {
     width: 300px;
     height: 300px;
+}
+
+@media screen and (max-width: 1500px) {
+    .container-signup .registrarse {
+        left: -6vw;
+        font-size: 3em;
+    }
+
+    .container-login .inicio {
+        left: -8vw;
+        font-size: 3em;
+    }
+
+    .container-signup form input {
+        width: 40vw;
+    }
+
+    .container-login form input {
+        width: 40vw;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .container-signup {
+        overflow: auto;
+    }
+
+    .container-signup form {
+        top: 5vh;
+    }
+
+    .container-signup .registrarse {
+        left: -8.5vw;
+        font-size: 2.9em;
+    }
+
+    .container-login .inicio {
+        left: -10vw;
+        font-size: 2.9em;
+    }
+
+    .container-signup form input {
+        width: 50vw;
+    }
+
+    .container-login form input {
+        width: 50vw;
+    }
+
+    .buscar-usuario {
+        width: 40vw;
+    }
+
+    .left-90 {
+        left: 88vw;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .container-signup {
+        overflow: auto;
+        left: 93vw;
+    }
+
+    .container-signup .registrarse {
+        left: -8vw;
+        font-size: 2.5em;
+    }
+
+    .container-login .inicio {
+        left: -9.5vw;
+        font-size: 2.5em;
+    }
+
+    .container-signup form input {
+        width: 50vw;
+    }
+
+    .container-login form input {
+        width: 50vw;
+    }
+
+    .buscar-usuario {
+        width: 40vw;
+    }
+
+    .left-5 {
+        left: 5vw;
+    }
+
+    .left-90 {
+        left: 85vw;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .container-signup {
+        overflow: auto;
+        left: 93vw;
+    }
+
+    .container-signup .registrarse {
+        left: -10vw;
+        font-size: 2.5em;
+    }
+
+    .container-login .inicio {
+        left: -11vw;
+        font-size: 2.5em;
+    }
+
+    .container-signup form input {
+        width: 50vw;
+    }
+
+    .container-login form input {
+        width: 50vw;
+    }
+
+    .buscar-usuario {
+        width: 50vw;
+    }
+
+    .left-5 {
+        left: 8vw;
+    }
+
+    .left-90 {
+        left: 85vw;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .container-signup {
+        overflow: auto;
+        left: 93vw;
+    }
+
+    .container-signup .registrarse {
+        left: -9vw;
+        font-size: 2em;
+    }
+
+    .container-login .inicio {
+        left: -11vw;
+        font-size: 2em;
+    }
+
+    .container-signup form input {
+        width: 60vw;
+    }
+
+    .container-login form input {
+        width: 60vw;
+    }
+
+    .buscar-usuario {
+        width: 50vw;
+    }
+
+    .left-5 {
+        left: 8vw;
+    }
+
+    .left-90 {
+        left: 85vw;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .container-signup {
+        overflow: auto;
+        left: 90vw;
+    }
+
+    .container-signup .registrarse {
+        left: -9vw;
+        font-size: 1.8em;
+    }
+
+    .container-signup form input {
+        width: 60vw;
+    }
+
+    .container-login .inicio {
+        left: -11vw;
+        font-size: 1.8em;
+    }
+
+    .container-login form input {
+        width: 60vw;
+    }
+
+    .buscar-usuario {
+        width: 50vw;
+    }
+
+    .left-5 {
+        left: 8vw;
+    }
+
+    .left-90 {
+        left: 80vw;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .container-signup {
+        overflow: auto;
+        left: 85vw;
+    }
+
+    .container-signup .registrarse {
+        left: -9vw;
+        font-size: 1.6em;
+    }
+
+    .container-signup form {
+        top: 10vh;
+    }
+
+    .container-signup form input {
+        width: 60vw;
+    }
+
+    .container-login .inicio {
+        left: -11vw;
+        font-size: 1.6em;
+    }
+
+    .container-login form input {
+        width: 60vw;
+    }
+
+    .buscar-usuario {
+        width: 50vw;
+    }
+
+    .left-5 {
+        left: 8vw;
+    }
+
+    .left-90 {
+        left: 70vw;
+    }
+}
+
+@media screen and (max-width: 1000px) and (max-height: 500px) {
+    .container-signup form {
+        top: 160px;
+    }
 }
