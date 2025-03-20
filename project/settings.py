@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-rr0wyuy#$y^=lw0(5%6td1bo&&-t^1c^i-r=pl_ve2us3aemfo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['espaciokinef.pythonanywhere.com']
 
 
 # Application definition
@@ -80,8 +80,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'EspacioKinef$default',
+        'USER': 'EspacioKinef',
+        'PASSWORD':'Loskinef2025!',
+        'HOST':'EspacioKinef.mysql.pythonanywhere-services.com',
+        'PORT':'3306',
     }
 }
 
