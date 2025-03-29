@@ -33,7 +33,7 @@ class Pagos(models.Model):
     modo_pago = models.CharField(max_length=50, null=True, blank=True)
     actividad = models.CharField(max_length=50)
     pase = models.CharField(max_length=50, null=True, blank=True)
-    fecha = models.DateField(auto_now=True)
+    fecha = models.DateField()
 
     def __str__(self):
         return f'{self.usuario}, {self.actividad} {self.pase}, {self.fecha}'

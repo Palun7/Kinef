@@ -145,7 +145,6 @@ class GastosView(View):
             data = []
             for gasto in gastos:
                 gasto['fecha_gasto'] = gasto['fecha_gasto'].strftime('%d/%m/%Y') 
-                print(gasto)
                 data.append(gasto)
             return JsonResponse(data, safe=False)
         except Exception:
@@ -178,11 +177,12 @@ class PagosView(View):
             modo_pago = data.get('modo_pago')
             actividad = data.get('actividad')
             pase = data.get('pase')
+            fecha = data.get('fecha')
 
             usuario = Usuarios.objects.get(id=usuario_id)
 
-            Pagos.objects.create(usuario=usuario, monto=monto, modo_pago=modo_pago, actividad=actividad, pase=pase)
-            return JsonResponse({'success': 'Gasto cargado correctamente'})
+            Pagos.objects.create(usuario=usuario, monto=monto, modo_pago=modo_pago, actividad=actividad, pase=pase, fecha=fecha)
+            return JsonResponse({'success': 'Pago cargado correctamente'})
         except Usuarios.DoesNotExist:
             return JsonResponse({'error': 'Usuario no encontrado'}, status=404)
         except Exception:
@@ -204,11 +204,10 @@ class PagosView(View):
             data = []
             for pago in pagos:
                 pago['fecha'] = pago['fecha'].strftime('%d/%m/%Y') 
-                print(pago)
                 data.append(pago)
             return JsonResponse(data, safe=False)
         except Exception:
-            return JsonResponse({'error': 'Error al obtener las horas'}, status=500)
+            return JsonResponse({'error': 'Error al obtener los pagos'}, status=500)
 
 class UsuariosView(View):
     def get(self, request, *args, **kwargs):

@@ -36,12 +36,14 @@
                     <input type="text" name="modo_pago" maxlength="50" placeholder="Modo de pago" required>
                     <input type="text" name="actividad" maxlength="50" placeholder="Actividad" required>
                     <input type="text" name="pase" maxlength="50" placeholder="Tipo de Pase" required>
+                    <input type="date" name="fecha" placeholder="Fecha" required>
                     <button type="submit" class="boton-cargar">Cargar Pago</button>
                 </form>
             </div>
             <input type="search" id="buscar_pago" class="buscar-usuario" placeholder="Buscar Pago">
         </div>
         <div class="contenedor-gastos">
+            <div id="pagos_cargados-activos" class="gastos-cargados"></div>
             <div id="pagos_cargados" class="gastos-cargados"></div>
         </div>
         <div class="boton-atras-contenedor">

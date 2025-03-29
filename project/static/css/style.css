@@ -466,6 +466,14 @@ h1 {
     height: 230px;
 }
 
+.height-250 {
+    height: 250px;
+}
+
+.height-260 {
+    height: 260px;
+}
+
 .height-auto {
     height: auto;
 }
@@ -492,6 +500,14 @@ h1 {
 
 .cursor {
     cursor: pointer;
+}
+
+.activo {
+    background-color: rgba(0, 255, 0, 0.476);
+}
+
+.vencido {
+    background-color: rgba(255, 0, 0, 0.541);
 }
 
 /* footer */
