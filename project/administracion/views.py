@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import JsonResponse
-from usuarios.models import Usuarios
+from usuarios.models import Usuarios, validate_image
 from .models import Horas, Gastos, Pagos
 from datetime import datetime
 from django.utils.timezone import now
 import json
+from django.contrib.auth.models import User
+from django.forms import ValidationError
 
 
 def administracion(request):
@@ -248,3 +250,68 @@ class UsuariosView(View):
             return JsonResponse(usuarios_data, safe=False)
         except Exception:
             return JsonResponse({'error': 'Error al obtener usuarios'}, status=500)
+
+class Cargar_usuarios(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'administracion/cargar_usuarios.html')
+
+    def post(self, request):
+        try:
+            if request.content_type == 'application/json':
+                data = json.loads(request.body)
+                action = data.get('action')
+            else:
+                action = request.POST.get('action')
+
+            if action == 'register':
+                return self.register_user(request)
+            else:
+                return JsonResponse({'error': 'Acción no válida'}, status=400)
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Formato de solicitud inválido'}, status=400)
+
+    def register_user(self, request):
+        try:
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            nombre = request.POST.get('nombre')
+            apellido = request.POST.get('apellido')
+            mail = request.POST.get('mail')
+            dni = request.POST.get('dni')
+            fecha_nacimiento = request.POST.get('fecha_nacimiento')
+            telefono = request.POST.get('telefono')
+            domicilio = request.POST.get('domicilio')
+            instagram = request.POST.get('instagram')
+            foto = request.FILES.get('foto')
+
+            if User.objects.filter(username=username).exists():
+                return JsonResponse({'error': 'El usuario ya existe'}, status=400)
+
+            if Usuarios.objects.filter(dni=dni).exists():
+                return JsonResponse({'error': 'El DNI ya está cargado'}, status=400)
+
+            if not dni or len(dni) != 8 or not dni.isdigit():
+                return JsonResponse({'error': 'El DNI debe tener 8 dígitos numéricos'}, status=400)
+
+            if foto:
+                try:
+                    validate_image(foto)
+                except ValidationError as e:
+                    return JsonResponse({'error': str(e)}, status=400)
+
+            user = User.objects.create_user(username=username, password=password)
+            Usuarios.objects.create(
+                user=user,
+                nombre=nombre,
+                apellido=apellido,
+                mail=mail,
+                dni=dni,
+                fecha_nacimiento=fecha_nacimiento,
+                telefono=telefono,
+                domicilio=domicilio,
+                instagram=instagram,
+                foto=foto
+            )
+            return JsonResponse({'success': f'{username} se ha registrado con éxito'})
+        except Exception:
+            return JsonResponse({'error': 'Error al intentar registrar, verifique los datos'}, status=500)

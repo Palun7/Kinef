@@ -1,13 +1,13 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{% static 'img/kinef_logo1.png' %}">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Horas</title>
+    <title>Usuarios</title>
 </head>
 <body>
     <nav class="navbar">
@@ -24,28 +24,25 @@
                 <a href="{% url 'administracion:cargar_usuarios' %}" class="boton-basico">Cargar Usuario</a>
             </ul>
         </div>
-        <div class="horas-main">
-            <h2>Horas</h2>
-            <div class="form-horas-contenedor">
-                <button class="boton-basico" id="cargar_horas">Cargar horas</button>
-                <form id="horas_form" class="horas-form">
-                    {% csrf_token %}
-                    <select name="usuario" id="usuario">
-                        <option value="">Usuario</option>
-                    </select>
-                    <input type="date" name="dia" required>
-                    <input type="number" name="horas" maxlength="3" placeholder="Horas" required>
-                    <button type="submit" class="boton-cargar" id="boton_cargar">Cargar</button>
-                </form>
-            </div>
-        </div>
-        <div class="horas-cargadas-contenedor">
-            <div class="botones-horas">
-                <button id="mostrar_horas" class="boton-basico">Mostrar historial de horas</button>
-                <button id="mostrar_horas_sumadas" class="boton-basico">Ver horas este mes</button>
-            </div>
-            <div id="horas_cargadas" class="horas-cargadas"></div>
-            <div id="horas_sumadas" class="horas-cargadas"></div>
+        <div class="usuarios-main">
+            <h2>Cargar usuario</h2>
+            <div id="errores_password"></div>
+            <form id="register-form" enctype="multipart/form-data" class="form-cargar-usuario">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Nombre de Usuario" required />
+                <input type="password" name="password" placeholder="Contraseña" id="password" required />
+                <input type="password" name="password2" placeholder="Repite la contraseña" id="password2" required />
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="text" name="apellido" placeholder="Apellido" required>
+                <input type="date" name="fecha_nacimiento" required />
+                <input type="text" name="dni" placeholder="DNI" required />
+                <input type="text" name="telefono" placeholder="Teléfono"/>
+                <input type="email" name="mail" placeholder="Mail">
+                <input type="text" name="domicilio" placeholder="Domicilio"/>
+                <input type="text" name="instagram" placeholder="Instagram" />
+                <input type="file" name="foto">
+                <button type="submit" class="boton-login">Registrar</button>
+            </form>
         </div>
         <div class="boton-atras-contenedor">
             <a href="{% url 'administracion:administracion' %}" class="boton-basico"><strong>←</strong></a>
@@ -55,7 +52,8 @@
         {% include 'core/components/footer.html' %}
     </footer>
 
+
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="{% static 'administracion/scripts/horas.js' %}"></script>
+    <script src="{% static 'administracion/scripts/cargar-usuarios.js' %}"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@ class Usuarios(models.Model):
     dni = models.CharField(max_length=8, unique=True)
     fecha_nacimiento = models.DateField()
     telefono = models.CharField(max_length=15)
-    domicilio = models.CharField(max_length=150)
+    domicilio = models.CharField(max_length=150, blank=True, null=True)
     instagram = models.CharField(max_length=150, null=True, blank=True)
     foto = models.ImageField(upload_to='img', null=True, blank=True)
     cargado = models.DateField(auto_now_add=True)

@@ -19,6 +19,10 @@
                 <div class="foto-perfil-contenedor cursor" id="foto_perfil_contenedor">
                     <img src="{{ foto.url }}" alt="Foto no cargada" class="foto-perfil">
                 </div>
+            {% else %}
+                <div class="foto-perfil-contenedor cursor" id="foto_perfil_contenedor">
+                    <img src="../../../static/img/kinef_logo1.png" alt="Logo de Kinef" class='foto-perfil'>
+                </div>
             {% endif %}
             <h3>{{ username }}</h3>
             <p>{{ nombre }} {{ apellido }}</p>

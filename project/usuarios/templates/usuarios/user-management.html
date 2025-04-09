@@ -26,8 +26,7 @@
         <section class="container-signup" id="container_signup">
             <button class="registrarse position-fixed" id="registrarse">Registrarse</button>
             <div id="container_register-form" class="container-register-form">
-                <div id="errores_password">
-                </div>
+                <div id="errores_password"></div>
                 <form id="register-form" enctype="multipart/form-data">
                     {% csrf_token %}
                     <input type="text" name="username" placeholder="Nombre de Usuario" required />
@@ -35,11 +34,11 @@
                     <input type="password" name="password2" placeholder="Repite la contraseña" id="password2" required />
                     <input type="text" name="nombre" placeholder="Nombre" required>
                     <input type="text" name="apellido" placeholder="Apellido" required>
-                    <input type="email" name="mail" placeholder="Mail" required>
+                    <input type="email" name="mail" placeholder="Mail">
                     <input type="text" name="dni" placeholder="DNI" required />
                     <input type="date" name="fecha_nacimiento" required />
-                    <input type="text" name="telefono" placeholder="Teléfono" required />
-                    <input type="text" name="domicilio" placeholder="Domicilio" required />
+                    <input type="text" name="telefono" placeholder="Teléfono"/>
+                    <input type="text" name="domicilio" placeholder="Domicilio"/>
                     <input type="text" name="instagram" placeholder="Instagram" />
                     <input type="file" name="foto">
                     <button type="submit" class="boton-login">Registrar</button>

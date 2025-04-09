@@ -9,7 +9,9 @@
             <a href="{% url 'usuarios:perfil' %}"><img src="{{ user.usuarios.foto.url }}" alt="Perfil" class="foto-perfil"></a>
         </div>
     {% else %}
-        <a href="{% url 'usuarios:perfil' %}" class="boton-basico">Perfil</a>
+        <div class="foto-link-contenedor">
+            <a href="{% url 'usuarios:perfil' %}"><img src="../../../static/img/kinef_logo1.png" alt="Logo de Kinef" class='foto-perfil'></a>
+        </div>
     {% endif %}
     <form action="{% url 'usuarios:logout' %}" method="post">
         {% csrf_token %}

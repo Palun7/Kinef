@@ -62,35 +62,67 @@ function crearDivUsuario(datos){
         }else{
             foto2 = '';
         }
-
-        div.innerHTML = `
-                ${foto}
-                <h3>${usuario.user__username}</h3>
-                <p><strong>Nombre:</strong> ${usuario.nombre} ${usuario.apellido}</p>
-                <p><strong>DNI:</strong> ${usuario.dni}</p>
-        `;
-        div.addEventListener('click',()=>{
-            if(div.classList.contains('completo')){
-                div.innerHTML = `
+        if(foto){
+            div.innerHTML = `
                     ${foto}
                     <h3>${usuario.user__username}</h3>
                     <p><strong>Nombre:</strong> ${usuario.nombre} ${usuario.apellido}</p>
                     <p><strong>DNI:</strong> ${usuario.dni}</p>
-                `;
-                div.classList.remove('completo', 'position-relative', 'z-index-100');
-            }else {
-                div.innerHTML = `
-                    ${foto2}
+            `;
+        }else{
+            div.innerHTML = `
+                    <img src="../../../static/img/kinef_logo1.png" alt="Logo de Kinef" class='circulo'>
                     <h3>${usuario.user__username}</h3>
                     <p><strong>Nombre:</strong> ${usuario.nombre} ${usuario.apellido}</p>
-                    <p><strong>Mail:</strong> ${usuario.mail}</p>
                     <p><strong>DNI:</strong> ${usuario.dni}</p>
-                    <p><strong>Fecha de nacimiento:</strong> ${usuario.fecha_nacimiento}</p>
-                    <p><strong>Domicilio:</strong> ${usuario.domicilio}</p>
-                    <p><strong>Telefono:</strong> ${usuario.telefono}</p>
-                    <p><strong>Instagram:</strong> ${usuario.instagram}</p>
-                    <p><strong>Cargado el:</strong> ${usuario.cargado}</p>
-                `;
+            `;
+        }
+        div.addEventListener('click',()=>{
+            if(div.classList.contains('completo')){
+                if(foto){
+                    div.innerHTML = `
+                            ${foto}
+                            <h3>${usuario.user__username}</h3>
+                            <p><strong>Nombre:</strong> ${usuario.nombre} ${usuario.apellido}</p>
+                            <p><strong>DNI:</strong> ${usuario.dni}</p>
+                    `;
+                }else{
+                    div.innerHTML = `
+                            <img src="../../../static/img/kinef_logo1.png" alt="Logo de Kinef" class='circulo'>
+                            <h3>${usuario.user__username}</h3>
+                            <p><strong>Nombre:</strong> ${usuario.nombre} ${usuario.apellido}</p>
+                            <p><strong>DNI:</strong> ${usuario.dni}</p>
+                    `;
+                }
+                div.classList.remove('completo', 'position-relative', 'z-index-100');
+            }else {
+                if(foto2){
+                    div.innerHTML = `
+                        ${foto2}
+                        <h3>${usuario.user__username}</h3>
+                        <p><strong>Nombre:</strong> ${usuario.nombre} ${usuario.apellido}</p>
+                        <p><strong>Mail:</strong> ${usuario.mail}</p>
+                        <p><strong>DNI:</strong> ${usuario.dni}</p>
+                        <p><strong>Fecha de nacimiento:</strong> ${usuario.fecha_nacimiento}</p>
+                        <p><strong>Domicilio:</strong> ${usuario.domicilio}</p>
+                        <p><strong>Telefono:</strong> ${usuario.telefono}</p>
+                        <p><strong>Instagram:</strong> ${usuario.instagram}</p>
+                        <p><strong>Cargado el:</strong> ${usuario.cargado}</p>
+                    `;
+                }else{
+                    div.innerHTML = `
+                        <img src="../../../static/img/kinef_logo1.png" alt="Logo de Kinef" class='circulo'>
+                        <h3>${usuario.user__username}</h3>
+                        <p><strong>Nombre:</strong> ${usuario.nombre} ${usuario.apellido}</p>
+                        <p><strong>Mail:</strong> ${usuario.mail}</p>
+                        <p><strong>DNI:</strong> ${usuario.dni}</p>
+                        <p><strong>Fecha de nacimiento:</strong> ${usuario.fecha_nacimiento}</p>
+                        <p><strong>Domicilio:</strong> ${usuario.domicilio}</p>
+                        <p><strong>Telefono:</strong> ${usuario.telefono}</p>
+                        <p><strong>Instagram:</strong> ${usuario.instagram}</p>
+                        <p><strong>Cargado el:</strong> ${usuario.cargado}</p>
+                    `;
+                }
                 div.classList.add('completo', 'position-relative', 'z-index-100');
             }
         })
